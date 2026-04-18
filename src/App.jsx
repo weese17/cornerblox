@@ -162,7 +162,7 @@ export default function CornerBlox() {
   // Online socket setup
   useEffect(()=>{
     if(!isOnline) return;
-    const s=io("http://localhost:3001");
+    const s=io("https://cornerblox-production.up.railway.app");
     setSocket(s);
     s.on("room-joined",({room,playerIndex})=>{ setRoomCode(room); setMyPlayerIndex(playerIndex); setOnlineStatus(`Joined as ${COLOR_NAMES[playerIndex]}. Waiting for players...`); });
     s.on("game-start",({numPlayers})=>{ const ng=initGame(); ng.mode="playing"; ng.numPlayers=numPlayers; ng.aiPlayers=[]; setGame(ng); setOnlineStatus("Game started!"); });
